@@ -1,5 +1,33 @@
 const myLibrary = []
 
+const addBookBtn = document.querySelector('#add-book-button')
+const addBookModal = document.querySelector('#add-book-modal')
+const cancelButton = document.querySelector('#cancel-button')
+const confirmButton = document.querySelector('#confirm-button')
+const titleInput = document.querySelector('#title')
+const authorInput = document.querySelector('#author')
+const pagesInput = document.querySelector('#pages')
+const readInput = document.querySelector('#read')
+
+addBookBtn.addEventListener('click', () => {
+  addBookModal.showModal()
+})
+
+cancelButton.addEventListener('click', () => {
+  addBookModal.close()
+})
+
+confirmButton.addEventListener('click', (e) => {
+  e.preventDefault()
+  addBookToLibrary(
+    titleInput.value,
+    authorInput.value,
+    pagesInput.value,
+    readInput.checked
+  )
+  addBookModal.close()
+})
+
 function Book(id, title, author, pages, read) {
   this.id = id
   this.title = title
@@ -8,11 +36,7 @@ function Book(id, title, author, pages, read) {
   this.read = read
 }
 
-function addBookToLibrary() {
-  const title = prompt('What is the title of the book?')
-  const author = prompt('Who is the author?')
-  const pages = Number.parseInt(prompt('How many pages does it have?'))
-  const read = confirm('Have you read it? OK for yes, Cancel for No')
+function addBookToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID()
 
   myLibrary.push(new Book(id, title, author, pages, read))

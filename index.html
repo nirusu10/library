@@ -9,6 +9,32 @@
   </head>
   <body>
     <h1>Nils' Library</h1>
+    <button id="add-book-button">Add Book</button>
+    <dialog id="add-book-modal">
+      <form action="" method="dialog">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div>
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author" />
+        </div>
+        <div>
+          <label for="pages">Pages</label>
+          <input type="number" name="pages" id="pages" />
+        </div>
+        <div>
+          <label for="read">Read?</label>
+          <input type="checkbox" name="read" id="read" />
+        </div>
+        <div>
+          <button id="cancel-button">Cancel</button>
+          <button id="confirm-button">Add</button>
+        </div>
+      </form>
+    </dialog>
+
     <div class="bookshelf"></div>
   </body>
 </html>
