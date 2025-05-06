@@ -17,3 +17,34 @@ function addBookToLibrary() {
 
   myLibrary.push(new Book(id, title, author, pages, read))
 }
+
+function makeBookCard(book) {
+  const bookCard = document.createElement('div')
+  bookCard.classList.add('book-card')
+
+  const title = document.createElement('h2')
+  title.textContent = book.title
+  bookCard.appendChild(title)
+
+  const author = document.createElement('p')
+  author.textContent = book.author
+  bookCard.appendChild(author)
+
+  const pages = document.createElement('p')
+  pages.textContent = book.pages
+  bookCard.appendChild(pages)
+
+  const read = document.createElement('p')
+  read.textContent = book.read ? 'read' : 'not yet read'
+  bookCard.appendChild(read)
+
+  return bookCard
+}
+
+function renderBooks() {
+  const shelf = document.querySelector('.bookshelf')
+  shelf.innerHTML = ''
+  myLibrary.forEach((book) => {
+    shelf.appendChild(makeBookCard(book))
+  })
+}
