@@ -1,19 +1,55 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
 body {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+button {
+  font-weight: 700;
+  padding: 8px 16px;
+}
+
+h1 {
+  margin-block: 16px;
+}
+
 .bookshelf {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
   gap: 16px;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .book-card {
-  border: 1px solid #aaa;
   border-radius: 1em;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.book-card h2 {
+  font-size: 1.8rem;
+}
+
+.book-card p {
+  font-size: 1.2rem;
+}
+
+.book-card button {
+  width: 120px;
+  align-self: center;
 }
 
 #add-book-button {
