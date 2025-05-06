@@ -1,4 +1,4 @@
-const myLibrary = []
+let myLibrary = []
 
 const addBookBtn = document.querySelector('#add-book-button')
 const addBookModal = document.querySelector('#add-book-modal')
@@ -40,6 +40,7 @@ function addBookToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID()
 
   myLibrary.push(new Book(id, title, author, pages, read))
+  renderBooks()
 }
 
 function makeBookCard(book) {
@@ -62,6 +63,17 @@ function makeBookCard(book) {
   read.textContent = book.read ? 'read' : 'not yet read'
   bookCard.appendChild(read)
 
+  const removeBookButton = document.createElement('button')
+  removeBookButton.textContent = 'Remove'
+  removeBookButton.addEventListener('click', () => {
+    const filteredBooks = myLibrary.filter(
+      (librayBook) => librayBook.id !== book.id
+    )
+    myLibrary = filteredBooks
+    renderBooks()
+  })
+  bookCard.appendChild(removeBookButton)
+
   return bookCard
 }
 
@@ -72,3 +84,5 @@ function renderBooks() {
     shelf.appendChild(makeBookCard(book))
   })
 }
+
+renderBooks()
