@@ -36,6 +36,10 @@ function Book(id, title, author, pages, read) {
   this.read = read
 }
 
+Book.prototype.toggleRead = function () {
+  this.read = !this.read
+}
+
 function addBookToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID()
 
@@ -77,7 +81,7 @@ function makeBookCard(book) {
   const toggleReadButton = document.createElement('button')
   toggleReadButton.textContent = book.read ? 'Set "unread"' : 'Set "read"'
   toggleReadButton.addEventListener('click', (e) => {
-    book.read = !book.read
+    book.toggleRead()
     read.textContent = book.read ? 'read' : 'not yet read'
     e.target.textContent = book.read ? 'Set "unread"' : 'Set "read"'
   })
