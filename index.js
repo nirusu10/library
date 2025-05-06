@@ -74,6 +74,15 @@ function makeBookCard(book) {
   })
   bookCard.appendChild(removeBookButton)
 
+  const toggleReadButton = document.createElement('button')
+  toggleReadButton.textContent = book.read ? 'Set "unread"' : 'Set "read"'
+  toggleReadButton.addEventListener('click', (e) => {
+    book.read = !book.read
+    read.textContent = book.read ? 'read' : 'not yet read'
+    e.target.textContent = book.read ? 'Set "unread"' : 'Set "read"'
+  })
+  bookCard.appendChild(toggleReadButton)
+
   return bookCard
 }
 
